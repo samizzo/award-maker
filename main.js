@@ -49,7 +49,6 @@ $(document).ready(function() {
     }
 
     function refreshTable() {
-        // Refresh the table.
         $tableData.empty();
         for (var i = 0; i < awards.length; i++) {
             var award = awards[i];
@@ -59,14 +58,13 @@ $(document).ready(function() {
     }
 
     function refreshJson() {
-        // Refresh the json.
-        //$json.val(JSON.stringify(awards));
         /*
         [
             { "position": "WINNER", "category": "GAME OF THE YEAR", "festival": "INTEL LEVEL UP 2017" },
             { .. }
         ]
         */
+
         var json = '[\n';
         for (var i = 0; i < awards.length; i++) {
             var award = awards[i];
