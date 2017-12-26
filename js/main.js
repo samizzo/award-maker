@@ -1,16 +1,5 @@
-define([ 'jquery' ], function($) {
+define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
     var awards = [];
-
-    var largeDeviceTemplate =
-        '\t<div class="uk-width-large-1-$SIZE">\n' +
-            '\t<div class="award uk-vertical-align uk-text-center">\n' +
-                '\t\t<div class="uk-vertical-align-middle uk-container-center">\n' +
-                    '\t\t\t<h2>$POSITION</h2>\n' +
-                    '\t\t\t<p class="italic">$CATEGORY</p>\n' +
-                    '\t\t\t<p class="medium">$FESTIVAL</p>\n' +
-                '\t\t</div>\n' +
-            '\t</div>\n' +
-        '\t</div>';
 
     var $position = $('#position');
     var $category = $('#category');
@@ -21,7 +10,6 @@ define([ 'jquery' ], function($) {
     var $preview = $('.award-preview');
     var $json = $('.award-json textarea');
     var $presskit = $('.award-presskit textarea');
-    var $preview = $('.award-preview-container');
 
     function makeTableRow(award) {
         return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td>&nbsp;</td></tr>';
@@ -112,27 +100,6 @@ define([ 'jquery' ], function($) {
     function replaceTemplateParams(str, params) {
     }
 
-    function refreshPreview() {
-        // $preview.empty();
-
-        // // Build large device layout.
-        // var html = '<!-- Large device layout -->\n';
-        // var numRows = awards.length / 3;
-        // var numRemaining = awards.length % 3;
-
-        // // First generate all complete rows.
-        // for (var i = 0; i < numRows; i++) {
-        //     for (var index = (i*3); index < (i*3)+3; index++) {
-        //         var award = awards[index];
-        //         html += '<div class="uk-grid uk-text-center uk-visible-large" id="awards">\n';
-        //         var row = largeDeviceTemplate.replace('$SIZE', 3);
-        //         row = row.replace('$POSITION', award.position);
-        //         row = row.replace('$')
-        //         html += '</div>\n';
-        //     }
-        // }
-    }
-
     function showError(msg, element) {
         element.addClass('uk-form-danger');
         $errorMsg.removeClass('uk-hidden');
@@ -181,7 +148,7 @@ define([ 'jquery' ], function($) {
         refreshTable();
         refreshJson();
         refreshPresskit();
-        refreshPreview();
+        Preview.refresh(awards);
 
         // Clear the old values.
         $position.val('');
@@ -205,6 +172,6 @@ define([ 'jquery' ], function($) {
 
         refreshTable();
         refreshPresskit();
-        refreshPreview();
+        Preview.refresh(awards);
     });
 });

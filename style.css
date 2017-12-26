@@ -44,3 +44,49 @@ div.award-preview {
 td.add-award-container {
     vertical-align: middle;
 }
+
+/* Award styles for embedding */
+div#awards {
+    margin-top: 0px;
+}
+
+div.award {
+    margin-top: 10px;
+    width: 240px;
+    height: 120px;
+    background: url("laurel-left.png") left no-repeat, url("laurel-right.png") right no-repeat;
+    display: inline-block;
+    /*font-family: Open Sans, sans-serif;*/
+}
+
+div.award h2 {
+    margin: 0;
+    font-size: 13pt;
+    /*color: #fff;*/
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+div.award p {
+    line-height: 1.2em;
+    margin: 0;
+    padding: 0;
+    font-size: 9.5pt;
+    /*color: #fff;*/
+    text-align: center;
+}
+
+div.award span.italic,
+div.award p.italic {
+    font-style: italic;
+}
+
+div.award p.small {
+    font-size: 6.5pt;
+}
+
+div.award p.medium {
+    font-size: 9pt;
+}
