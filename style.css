@@ -25,7 +25,8 @@ form input {
 }
 
 div.award-json,
-div.award-presskit {
+div.award-presskit,
+div.award-preview {
     margin-top: 16px;
 }
 
