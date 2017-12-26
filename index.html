@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Award Maker</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.gradient.min.css" />
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.xx.x/js/uikit.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src="main.js"></script>
+        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" /> -->
+    </head>
+
+    <body>
+        <div class="uk-container uk-container-center">
+            <h1 class="title">Award Maker</h1>
+            <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                <table class="uk-table uk-table-striped">
+                    <thead>
+                        <tr>
+                            <th>Position</th><th>Category</th><th>Festival</th><th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <form class="uk-form" onsubmit="return false;">
+                                    <input type="text" placeholder="Position" id="position" class="" />
+                                </form>
+                            </td>
+                            <td>
+                                <form class="uk-form" onsubmit="return false;">
+                                    <input type="text" placeholder="Category" id="category" class="" />
+                                </form>
+                            </td>
+                            <td>
+                                <form class="uk-form" onsubmit="return false;">
+                                    <input type="text" placeholder="Festival" id="festival" class="" />
+                                </form>
+                            </td>
+                            <td class="add-award-container"><button class="add-award uk-button uk-button-mini uk-button-primary">+</button></td>
+                        </tr>
+                    </tfoot>
+                    <tbody id="table-data">
+                    </tbody>
+                </table>
+                <div class="error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
+            </div>
+
+            <div class="award-json">
+                <div class="uk-container-center">
+                    <h2>JSON</h2>
+                    <form class="uk-form" onsubmit="return false;">
+                        <textarea cols="" rows="" placeholder="" id="json" class=""></textarea>
+                    </form>
+                    <div class="json-error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
+                </div>
+            </div>
+
+            <div class="award-presskit">
+                <div class="uk-container-center">
+                    <h2>Presskit</h2>
+                    <form class="uk-form" onsubmit="return false;">
+                        <textarea cols="" rows="" placeholder="" id="presskit"></textarea>
+                    </form>
+                </div>
+            </div>
+
+            <div class="award-preview">
+            </div>
+        </div>
+    </body>
+</html>
