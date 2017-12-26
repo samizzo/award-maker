@@ -1,4 +1,4 @@
-$(document).ready(function() {
+define([ 'jquery' ], function($) {
     var awards = [];
 
     var largeDeviceTemplate =
@@ -113,24 +113,24 @@ $(document).ready(function() {
     }
 
     function refreshPreview() {
-        $preview.empty();
+        // $preview.empty();
 
-        // Build large device layout.
-        var html = '<!-- Large device layout -->\n';
-        var numRows = awards.length / 3;
-        var numRemaining = awards.length % 3;
+        // // Build large device layout.
+        // var html = '<!-- Large device layout -->\n';
+        // var numRows = awards.length / 3;
+        // var numRemaining = awards.length % 3;
 
-        // First generate all complete rows.
-        for (var i = 0; i < numRows; i++) {
-            for (var index = (i*3); index < (i*3)+3; index++) {
-                var award = awards[index];
-                html += '<div class="uk-grid uk-text-center uk-visible-large" id="awards">\n';
-                var row = largeDeviceTemplate.replace('$SIZE', 3);
-                row = row.replace('$POSITION', award.position);
-                row = row.replace('$')
-                html += '</div>\n';
-            }
-        }
+        // // First generate all complete rows.
+        // for (var i = 0; i < numRows; i++) {
+        //     for (var index = (i*3); index < (i*3)+3; index++) {
+        //         var award = awards[index];
+        //         html += '<div class="uk-grid uk-text-center uk-visible-large" id="awards">\n';
+        //         var row = largeDeviceTemplate.replace('$SIZE', 3);
+        //         row = row.replace('$POSITION', award.position);
+        //         row = row.replace('$')
+        //         html += '</div>\n';
+        //     }
+        // }
     }
 
     function showError(msg, element) {
