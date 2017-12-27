@@ -1,10 +1,15 @@
 body {
-    background-color: #fff;
-    margin: 24px;
+    background-color: #848C8E;
+    padding-top: 24px;
 }
 
 h1 {
-    /*color: #fff;*/
+    color: #F1F2EE;
+}
+
+h2.award-maker {
+    color: #F1F2EE;
+    border-bottom: 1px solid #F1F2EE;
 }
 
 h1.title {
@@ -57,7 +62,7 @@ div#awards hr {
 
 div#awards div.award {
     margin-top: 10px;
-    width: 240px;
+    width: 260px;
     height: 120px;
     background: url("laurel-left.png") left no-repeat, url("laurel-right.png") right no-repeat;
     display: inline-block;
@@ -67,7 +72,7 @@ div#awards div.award {
 div#awards div.award h2 {
     margin: 0;
     font-size: 13pt;
-    /*color: #fff;*/
+    color: #fff;
     padding: 0;
     text-align: center;
     vertical-align: middle;
@@ -81,7 +86,7 @@ div#awards div.award p {
     margin: 0;
     padding: 0;
     font-size: 9.5pt;
-    /*color: #fff;*/
+    color: #fff;
     text-align: center;
     font-family: Open Sans, sans-serif;
 }
