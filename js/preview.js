@@ -4,7 +4,8 @@ define([ 'jquery', 'handlebars' ], function($, Handlebars) {
             '\t<div class="award uk-vertical-align uk-text-center">\n' +
                 '\t\t<div class="uk-vertical-align-middle uk-container-center">\n' +
                     '\t\t\t<h2>{{position}}</h2>\n' +
-                    '\t\t\t<p class="italic">{{category}}</p>\n' +
+                    '\t\t\t<p class="">{{category}}</p>\n' +
+                    '\t\t\t<hr/>\n' +
                     '\t\t\t<p class="medium">{{festival}}</p>\n' +
                 '\t\t</div>\n' +
             '\t</div>\n' +
