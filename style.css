@@ -29,10 +29,12 @@ form input {
     width: 100%;
 }
 
-div.award-json,
-div.award-presskit,
-div.award-preview {
+div.award-presskit {
     margin-top: 16px;
+}
+
+div.award-preview {
+    padding-left: 0;
 }
 
 .award-json textarea,
