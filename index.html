@@ -3,6 +3,7 @@
         <title>Award Maker</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.gradient.min.css" />
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <link href="awards.css" rel="stylesheet" type="text/css" />
         <script data-main="js/app" src="js/require.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -48,20 +49,20 @@
 
             <div class="uk-flex uk-flex-column uk-flex-item-auto award-data">
                 <div class="award-json uk-flex-item-auto uk-flex uk-flex-column uk-form">
-                    <h2 class="award-maker uk-flex-item-none">JSON</h2>
+                    <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">JSON</h2><span class="fa fa-clipboard uk-float-right button tooltip"><span class="tooltip-text tooltip-left">Copy to clipboard</span></span></span>
                     <textarea cols="" rows="" placeholder="" id="json" class="uk-flex-item-auto"></textarea>
                     <div class="json-error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
                 </div>
 
                 <div class="award-presskit uk-flex-item-auto uk-flex uk-flex-column uk-form">
-                    <h2 class="award-maker uk-flex-item-none">Presskit</h2>
+                    <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">Presskit</h2><span class="fa fa-clipboard uk-float-right button tooltip"><span class="tooltip-text tooltip-left">Copy to clipboard</span></span></span>
                     <textarea cols="" rows="" placeholder="" id="presskit" class="uk-flex-item-auto" readonly></textarea>
                 </div>
             </div>
         </div>
 
-        <div class="award-preview">
-            <h2 class="award-maker">HTML preview</h2>
+        <div class="award-preview uk-flex uk-flex-column">
+            <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">HTML preview</h2><span class="fa fa-clipboard uk-float-right button tooltip"><span class="tooltip-text tooltip-left">Copy to clipboard</span></span></span>
             <div class="award-preview-container uk-panel uk-panel-box" />
         </div>
     </body>
