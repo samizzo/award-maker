@@ -79,6 +79,11 @@ define([ 'jquery', 'handlebars', 'preview', 'json' ], function($, Handlebars, Pr
         // TODO: on enter, validate and add the award
     }
 
+    function hideError(tableElement) {
+        tableElement.removeClass('uk-form-danger');
+        tableElement.val('');
+    }
+
     $position.keyup(onKeyUp);
     $category.keyup(onKeyUp);
     $festival.keyup(onKeyUp);
@@ -90,6 +95,11 @@ define([ 'jquery', 'handlebars', 'preview', 'json' ], function($, Handlebars, Pr
             refreshPresskit();
             Preview.refresh(awards);
         }
+
+        $errorMsg.addClass('uk-hidden');
+        hideError($position);
+        hideError($category);
+        hideError($festival);
     });
 
     $('.add-award').click(function () {
@@ -126,6 +136,4 @@ define([ 'jquery', 'handlebars', 'preview', 'json' ], function($, Handlebars, Pr
         $category.val('');
         $festival.val('');
     });
-
-
 });
