@@ -166,8 +166,7 @@ td.add-award-container {
     background: #fff;
 }
 
-.error-message {
+.error-message,
+.json-error-message {
     border: 1px solid #d85030;
-    opacity: 0;
-    transition: opacity .2s;
 }

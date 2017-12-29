@@ -43,13 +43,13 @@ define([ 'jquery', 'handlebars', 'preview', 'json', 'presskit', 'clipboard' ], f
 
     function showError(msg, element) {
         element.addClass('uk-form-danger');
-        $errorMsg.css('opacity', '1');
+        $errorMsg.removeClass('uk-hidden');
         $errorMsg.text(msg);
     }
 
     function onKeyUp(eventData) {
         $(this).removeClass('uk-form-danger');
-        $errorMsg.css('opacity', '0');
+        $errorMsg.addClass('uk-hidden');
         // TODO: on enter, validate and add the award
     }
 
