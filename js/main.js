@@ -1,14 +1,12 @@
-define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
+define([ 'jquery', 'handlebars', 'preview', 'json' ], function($, Handlebars, Preview, Json) {
     var awards = [];
 
     var $position = $('#position');
     var $category = $('#category');
     var $festival = $('#festival');
     var $errorMsg = $('.error-message');
-    var $jsonErrorMsg = $('.json-error-message');
     var $tableData = $('#table-data');
     var $preview = $('.award-preview');
-    var $json = $('.award-json textarea');
     var $presskit = $('.award-presskit textarea');
 
     function makeTableRow(award) {
@@ -29,16 +27,6 @@ define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
         return presskit;
     }
 
-    function makeJsonRow(award) {
-        // { "position": "WINNER", "category": "GAME OF THE YEAR", "festival": "INTEL LEVEL UP 2017" },
-        var json = '\t{\n';
-        json += '\t\t"position": "' + award.position + '",\n';
-        json += '\t\t"category": "' + award.category + '",\n';
-        json += '\t\t"festival": "' + award.festival + '"\n';
-        json += '\t}';
-        return json;
-    }
-
     function addAward(position, category, festival) {
         var award = {
             position: position,
@@ -55,27 +43,6 @@ define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
             var html = makeTableRow(award);
             $tableData.append(html);
         }
-    }
-
-    function refreshJson() {
-        /*
-        [
-            { "position": "WINNER", "category": "GAME OF THE YEAR", "festival": "INTEL LEVEL UP 2017" },
-            { .. }
-        ]
-        */
-
-        var json = '[\n';
-        for (var i = 0; i < awards.length; i++) {
-            var award = awards[i];
-            json += makeJsonRow(award);
-            if (i !== awards.length - 1) {
-                json += ',';
-            }
-            json += '\n';
-        }
-        json += ']';
-        $json.val(json);
     }
 
     function refreshPresskit() {
@@ -106,11 +73,6 @@ define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
         $errorMsg.text(msg);
     }
 
-    function showJsonError(msg) {
-        $jsonErrorMsg.removeClass('uk-hidden');
-        $jsonErrorMsg.text(msg);
-    }
-
     function onKeyUp(eventData) {
         $(this).removeClass('uk-form-danger');
         $errorMsg.addClass('uk-hidden');
@@ -120,6 +82,15 @@ define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
     $position.keyup(onKeyUp);
     $category.keyup(onKeyUp);
     $festival.keyup(onKeyUp);
+
+    Json.setOnJsonUpdated(function (valid, newAwards) {
+        if (valid) {
+            awards = newAwards;
+            refreshTable();
+            refreshPresskit();
+            Preview.refresh(awards);
+        }
+    });
 
     $('.add-award').click(function () {
         // Validate the form data.
@@ -141,13 +112,13 @@ define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
             return;
         }
 
-        $jsonErrorMsg.addClass('uk-hidden');
+        Json.hideError();
 
         // Add a new award to the table and refresh it.
         addAward(position, category, festival);
         refreshTable();
-        refreshJson();
         refreshPresskit();
+        Json.refresh(awards);
         Preview.refresh(awards);
 
         // Clear the old values.
@@ -156,22 +127,5 @@ define([ 'jquery', 'handlebars', 'preview' ], function($, Handlebars, Preview) {
         $festival.val('');
     });
 
-    $json.keyup(function () {
-        var valid = true;
-        try {
-            awards = JSON.parse($json.val());
-        } catch (err) {
-            awards = [];
-            showJsonError('Invalid JSON.');
-            valid = $json.val().length === 0;
-        }
 
-        if (valid) {
-            $jsonErrorMsg.addClass('uk-hidden');
-        }
-
-        refreshTable();
-        refreshPresskit();
-        Preview.refresh(awards);
-    });
 });
