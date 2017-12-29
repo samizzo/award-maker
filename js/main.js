@@ -8,8 +8,8 @@ define([ 'jquery', 'handlebars', 'preview', 'json', 'presskit' ], function($, Ha
     var $tableData = $('#table-data');
     var $preview = $('.award-preview');
 
-    function makeTableRow(award) {
-        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td>&nbsp;</td></tr>';
+    function makeTableRow(award, index) {
+        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td><button data-awardindex="'+index+'"" class="remove-award uk-button uk-button-mini uk-button-primary fa fa-trash-o"></button></td></tr>';
     }
 
     function addAward(position, category, festival) {
@@ -21,11 +21,21 @@ define([ 'jquery', 'handlebars', 'preview', 'json', 'presskit' ], function($, Ha
         awards.push(award);
     }
 
+    function removeAward(index) {
+        if (index >= 0 && index < awards.length) {
+            awards.splice(index, 1);
+            refreshTable();
+            Presskit.refresh(awards);
+            Preview.refresh(awards);
+            Json.refresh(awards);
+        }
+    }
+
     function refreshTable() {
         $tableData.empty();
         for (var i = 0; i < awards.length; i++) {
             var award = awards[i];
-            var html = makeTableRow(award);
+            var html = makeTableRow(award, i);
             $tableData.append(html);
         }
     }
@@ -63,6 +73,12 @@ define([ 'jquery', 'handlebars', 'preview', 'json', 'presskit' ], function($, Ha
         hideError($position);
         hideError($category);
         hideError($festival);
+    });
+
+    $('tbody').on('click', '.remove-award', function (eventData) {
+        var $target = $(eventData.target);
+        var index = $target.data('awardindex');
+        removeAward(index);
     });
 
     $('.add-award').click(function () {
