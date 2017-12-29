@@ -31,13 +31,19 @@ textarea {
     border: none !important;
 }
 
-span.button {
+button.button {
     margin-top: 8px;
     margin-right: 8px;
     color: #1A1A1A;
+    background: none;
+    border: none;
 }
 
-span.button:hover {
+button.button:focus {
+    outline: none;
+}
+
+button.button:hover {
     text-decoration: none;
     cursor: pointer;
 }
@@ -66,7 +72,7 @@ span.button:hover {
 .tooltip-left {
     top: -5px;
     bottom: auto;
-    right: 128%;
+    right: 110%;
 }
 
 .tooltip:hover .tooltip-text {

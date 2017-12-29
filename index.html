@@ -4,11 +4,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.gradient.min.css" />
         <link href="style.css" rel="stylesheet" type="text/css" />
         <link href="awards.css" rel="stylesheet" type="text/css" />
-        <script data-main="js/app" src="js/require.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+        <script data-main="js/app" src="js/require.js"></script>
     </head>
 
     <body>
@@ -49,20 +48,20 @@
 
             <div class="uk-flex uk-flex-column uk-flex-item-auto award-data">
                 <div class="award-json uk-flex-item-auto uk-flex uk-flex-column uk-form">
-                    <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">JSON</h2><span class="fa fa-clipboard uk-float-right button tooltip"><span class="tooltip-text tooltip-left">Copy to clipboard</span></span></span>
+                    <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">JSON</h2><button class="fa fa-clipboard uk-float-right button tooltip clipboard-btn" data-clipboard-target="#json"><span class="tooltip-text tooltip-left">Copy to clipboard</span></button></span>
                     <textarea cols="" rows="" placeholder="" id="json" class="uk-flex-item-auto"></textarea>
                     <div class="json-error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
                 </div>
 
                 <div class="award-presskit uk-flex-item-auto uk-flex uk-flex-column uk-form">
-                    <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">Presskit</h2><span class="fa fa-clipboard uk-float-right button tooltip"><span class="tooltip-text tooltip-left">Copy to clipboard</span></span></span>
+                    <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">Presskit</h2><button class="fa fa-clipboard uk-float-right button tooltip clipboard-btn" data-clipboard-target="#presskit"><span class="tooltip-text tooltip-left">Copy to clipboard</span></button></span>
                     <textarea cols="" rows="" placeholder="" id="presskit" class="uk-flex-item-auto" readonly></textarea>
                 </div>
             </div>
         </div>
 
         <div class="award-preview uk-flex uk-flex-column">
-            <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">HTML preview</h2><span class="fa fa-clipboard uk-float-right button tooltip"><span class="tooltip-text tooltip-left">Copy to clipboard</span></span></span>
+            <span class="heading uk-flex-item-none"><h2 class="uk-display-inline">HTML preview</h2><button class="fa fa-clipboard uk-float-right button tooltip clipboard-btn"><span class="tooltip-text tooltip-left">Copy to clipboard</span></button></span>
             <div class="award-preview-container uk-panel uk-panel-box" />
         </div>
     </body>
