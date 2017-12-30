@@ -60,11 +60,17 @@ button.button:active {
     margin-top: 12px;
 }
 
-h1.title {
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+div.title {
     padding: 16px;
     padding-left: 40px;
     background-color: #2c3e50;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #F1F2EE;
+}
+
+h1.title {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0;
 }
 
 form {
