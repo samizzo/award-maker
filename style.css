@@ -29,6 +29,7 @@ h2 {
 span.heading {
     background-color: #D5DDF6;
     border-bottom: 1px solid #97B0F8;
+    padding-right: 8px;
 }
 
 textarea {
@@ -36,11 +37,12 @@ textarea {
 }
 
 button.button {
-    margin-top: 16px;
-    margin-right: 8px;
+    margin-top: 10px;
     color: #1A1A1A;
     background: none;
     border: none;
+    height: 26px;
+    width: 28px;
 }
 
 button.button:focus {
@@ -50,48 +52,12 @@ button.button:focus {
 button.button:hover {
     text-decoration: none;
     cursor: pointer;
+    background-color: #d5e7f8;
+    border: 1px solid #7ab1e8;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltip-text {
-    visibility: hidden;
-    position: absolute;
-    width: 120px;
-    background-color: #222;
-    color: #fff;
-    text-align: center;
-    padding: 8px 0;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity .6s;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 12px;
-}
-
-.tooltip-left {
-    top: -5px;
-    bottom: auto;
-    right: 110%;
-}
-
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-.tooltip-left::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent transparent #222;
+button.button:active {
+    margin-top: 12px;
 }
 
 h1.title {
