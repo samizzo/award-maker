@@ -4,12 +4,14 @@ html, body {
 }
 
 div.award-table {
-    margin-left: 32px;
+    margin-left: 16px;
     margin-right: 16px;
+    margin-top: 16px;
 }
 
 div.award-data {
-    margin-right: 32px;
+    margin-top: 16px;
+    margin-right: 16px;
 }
 
 h1 {
@@ -91,8 +93,8 @@ div.award-presskit {
 }
 
 div.award-preview {
-    margin-left: 32px;
-    margin-right: 32px;
+    margin-left: 16px;
+    margin-right: 16px;
     margin-top: 16px;
 }
 
