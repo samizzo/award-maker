@@ -1,4 +1,4 @@
-define([ 'jquery', 'mustache', 'clipboard' ], function($, Mustache, Clipboard) {
+define([ 'jquery', 'mustache', 'clipboard', 'filesaver' ], function($, Mustache, Clipboard, FileSaver) {
     var largeDeviceTemplate =
         '\t\t\t<div class="uk-width-large-1-{{size}}">\n' +
             '\t\t\t\t<div class="award uk-vertical-align uk-text-center">\n' +
@@ -81,23 +81,26 @@ define([ 'jquery', 'mustache', 'clipboard' ], function($, Mustache, Clipboard) {
 
     function refresh(awards) {
         $preview.empty();
+        lastHtml = '';
 
-        var numFullRows, numRemaining, index, i, firstIndex, award;
+        if (awards.length > 0) {
+            var numFullRows, numRemaining, index, i, firstIndex, award;
 
-        // Build large device layout (three laurels per row).
-        var html = '\t\t<!-- Large device layout -->\n';
-        html += makeLaurels(awards, 3, '\t\t<div class="uk-grid uk-text-center uk-visible-large" id="awards">\n', largeDeviceTemplate);
+            // Build large device layout (three laurels per row).
+            var html = '\t\t<!-- Large device layout -->\n';
+            html += makeLaurels(awards, 3, '\t\t<div class="uk-grid uk-text-center uk-visible-large" id="awards">\n', largeDeviceTemplate);
 
-        // Build medium device layout (two laurels per row).
-        html += '\t\t<!-- Medium device layout -->\n';
-        html += makeLaurels(awards, 2, '\t\t<div class="uk-grid uk-text-center uk-visible-medium awards" id="awards">\n', mediumDeviceTemplate);
+            // Build medium device layout (two laurels per row).
+            html += '\t\t<!-- Medium device layout -->\n';
+            html += makeLaurels(awards, 2, '\t\t<div class="uk-grid uk-text-center uk-visible-medium awards" id="awards">\n', mediumDeviceTemplate);
 
-        // Build small device layout (one laurel per row).
-        html += '\t\t<!-- Small device layout -->\n';
-        html += makeLaurels(awards, 1, '\t\t<div class="uk-grid uk-text-center uk-visible-small" id="awards">\n', smallDeviceTemplate);
+            // Build small device layout (one laurel per row).
+            html += '\t\t<!-- Small device layout -->\n';
+            html += makeLaurels(awards, 1, '\t\t<div class="uk-grid uk-text-center uk-visible-small" id="awards">\n', smallDeviceTemplate);
 
-        lastHtml = html;
-        $preview.html(html);
+            lastHtml = html;
+            $preview.html(html);
+        }
     }
 
     var fullHtml =
@@ -163,6 +166,16 @@ define([ 'jquery', 'mustache', 'clipboard' ], function($, Mustache, Clipboard) {
             var html = fullHtml + lastHtml + '\t</body>\n</html>\n';
             return html;
         }
+    });
+
+    $('.download-btn#preview').click(function () {
+        if (lastHtml.length === 0) {
+            return;
+        }
+
+        var html = fullHtml + lastHtml + '\t</body>\n</html>\n';
+        var blob = new Blob([html], { type: 'text/plain;charset=utf-8' });
+        saveAs(blob, 'awards.html');
     });
 
     return {

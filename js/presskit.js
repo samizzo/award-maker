@@ -1,4 +1,4 @@
-define([ 'jquery' ], function($) {
+define([ 'jquery', 'filesaver' ], function($, FileSaver) {
     var $presskit = $('.award-presskit textarea');
 
     function makePresskitRow(award) {
@@ -33,6 +33,16 @@ define([ 'jquery' ], function($) {
         presskit += '</awards>';
         $presskit.val(presskit);
     }
+
+    $('.download-btn#presskit').click(function () {
+        var presskit = $presskit.val();
+        if (presskit.length === 0) {
+            return;
+        }
+
+        var blob = new Blob([$presskit.val()], { type: 'text/plain;charset=utf-8' });
+        saveAs(blob, 'awards-presskit.xml');
+    });
 
     return {
         refresh: refresh

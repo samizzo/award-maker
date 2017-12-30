@@ -1,4 +1,4 @@
-define([ 'jquery' ], function($) {
+define([ 'jquery', 'filesaver' ], function($, FileSaver) {
     var $jsonErrorMsg = $('.json-error-message');
     var $json = $('.award-json textarea');
     var onJsonUpdated = function () { };
@@ -64,6 +64,16 @@ define([ 'jquery' ], function($) {
     function setOnJsonUpdated(callback) {
         onJsonUpdated = callback;
     }
+
+    $('.download-btn#json').click(function () {
+        var json = $json.val();
+        if (json.length === 0) {
+            return;
+        }
+
+        var blob = new Blob([$json.val()], { type: 'text/plain;charset=utf-8' });
+        saveAs(blob, 'awards.json');
+    });
 
     return {
         refresh: refresh,
