@@ -13,7 +13,7 @@ define([ 'jquery', 'filesaver' ], function($, FileSaver) {
         return json;
     }
 
-    $json.keyup(function () {
+    function parseJson() {
         var awards = [];
         var valid = true;
         try {
@@ -29,7 +29,16 @@ define([ 'jquery', 'filesaver' ], function($, FileSaver) {
         }
 
         onJsonUpdated(valid, awards);
-    });
+        return awards;
+    }
+
+    $json.keyup(parseJson);
+
+    function setJson(json) {
+        $json.val(json);
+        var awards = parseJson();
+        refresh(awards);
+    }
 
     function refresh(awards) {
         /*
@@ -79,6 +88,7 @@ define([ 'jquery', 'filesaver' ], function($, FileSaver) {
         refresh: refresh,
         showError: showError,
         hideError: hideError,
-        setOnJsonUpdated: setOnJsonUpdated
+        setOnJsonUpdated: setOnJsonUpdated,
+        setJson: setJson
     }
 });
