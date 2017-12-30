@@ -102,13 +102,13 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard' ], function($, Pre
     });
 
     $('tbody').on('click', '.award-up', function (eventData) {
-        var $target =  $(eventData.target);
+        var $target = $(eventData.target);
         var index = $target.data('awardindex');
         moveAward(index, index - 1);
     });
 
     $('tbody').on('click', '.award-down', function (eventData) {
-        var $target =  $(eventData.target);
+        var $target = $(eventData.target);
         var index = $target.data('awardindex');
         moveAward(index, index + 1);
     });
