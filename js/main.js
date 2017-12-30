@@ -1,4 +1,4 @@
-define([ 'jquery', 'handlebars', 'preview', 'json', 'presskit', 'clipboard' ], function($, Handlebars, Preview, Json, Presskit, Clipboard) {
+define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard' ], function($, Preview, Json, Presskit, Clipboard) {
     var awards = [];
     var clipboard = new Clipboard('.clipboard-btn');
 

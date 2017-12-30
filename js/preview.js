@@ -1,5 +1,5 @@
-define([ 'jquery', 'handlebars' ], function($, Handlebars) {
-    var largeDeviceTemplateSource =
+define([ 'jquery', 'mustache' ], function($, Mustache) {
+    var largeDeviceTemplate =
         '\t<div class="uk-width-large-1-{{size}}">\n' +
             '\t\t<div class="award uk-vertical-align uk-text-center">\n' +
                 '\t\t\t<div class="uk-vertical-align-middle uk-container-center">\n' +
@@ -10,9 +10,8 @@ define([ 'jquery', 'handlebars' ], function($, Handlebars) {
                 '\t\t\t</div>\n' +
             '\t\t</div>\n' +
         '\t</div>';
-    var largeDeviceTemplate = Handlebars.compile(largeDeviceTemplateSource);
 
-    var mediumDeviceTemplateSource =
+    var mediumDeviceTemplate =
         '\t<div class="uk-width-medium-1-{{size}}">\n' +
             '\t\t<div class="award uk-vertical-align uk-text-center">\n' +
                 '\t\t\t<div class="uk-vertical-align-middle uk-container-center">\n' +
@@ -23,9 +22,8 @@ define([ 'jquery', 'handlebars' ], function($, Handlebars) {
                 '\t\t\t</div>\n' +
             '\t\t</div>\n' +
         '\t</div>';
-    var mediumDeviceTemplate = Handlebars.compile(mediumDeviceTemplateSource);
 
-    var smallDeviceTemplateSource =
+    var smallDeviceTemplate =
         '\t<div class="uk-width-small-1-{{size}}">\n' +
             '\t\t<div class="award uk-vertical-align uk-text-center">\n' +
                 '\t\t\t<div class="uk-vertical-align-middle uk-container-center">\n' +
@@ -36,7 +34,6 @@ define([ 'jquery', 'handlebars' ], function($, Handlebars) {
                 '\t\t\t</div>\n' +
             '\t\t</div>\n' +
         '\t</div>';
-    var smallDeviceTemplate = Handlebars.compile(smallDeviceTemplateSource);
 
     var $preview = $('.award-preview-container');
 
@@ -47,7 +44,7 @@ define([ 'jquery', 'handlebars' ], function($, Handlebars) {
             category: award.category,
             festival: award.festival
         };
-        var html = template(context);
+        var html = Mustache.render(template, context);
         return html;
     }
 
