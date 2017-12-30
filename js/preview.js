@@ -6,7 +6,7 @@ define([ 'jquery', 'mustache' ], function($, Mustache) {
                     '\t\t\t\t<h2>{{position}}</h2>\n' +
                     '\t\t\t\t<p>{{category}}</p>\n' +
                     '\t\t\t\t<hr/>\n' +
-                    '\t\t\t\t<p class="medium">{{festival}}</p>\n' +
+                    '\t\t\t\t<p class="small">{{festival}}</p>\n' +
                 '\t\t\t</div>\n' +
             '\t\t</div>\n' +
         '\t</div>';
@@ -18,7 +18,7 @@ define([ 'jquery', 'mustache' ], function($, Mustache) {
                     '\t\t\t\t<h2>{{position}}</h2>\n' +
                     '\t\t\t\t<p>{{category}}</p>\n' +
                     '\t\t\t\t<hr/>\n' +
-                    '\t\t\t\t<p class="medium">{{festival}}</p>\n' +
+                    '\t\t\t\t<p class="small">{{festival}}</p>\n' +
                 '\t\t\t</div>\n' +
             '\t\t</div>\n' +
         '\t</div>';
@@ -30,7 +30,7 @@ define([ 'jquery', 'mustache' ], function($, Mustache) {
                     '\t\t\t\t<h2>{{position}}</h2>\n' +
                     '\t\t\t\t<p>{{category}}</p>\n' +
                     '\t\t\t\t<hr/>\n' +
-                    '\t\t\t\t<p class="medium">{{festival}}</p>\n' +
+                    '\t\t\t\t<p class="small">{{festival}}</p>\n' +
                 '\t\t\t</div>\n' +
             '\t\t</div>\n' +
         '\t</div>';
@@ -88,7 +88,7 @@ define([ 'jquery', 'mustache' ], function($, Mustache) {
 
         // Build medium device layout (two laurels per row).
         html += '<!-- Medium device layout -->\n';
-        html += makeLaurels(awards, 2, '<div class="uk-grid uk-text-center uk-visible-medium" id="awards">\n', mediumDeviceTemplate);
+        html += makeLaurels(awards, 2, '<div class="uk-grid uk-text-center uk-visible-medium awards" id="awards">\n', mediumDeviceTemplate);
 
         // Build small device layout (one laurel per row).
         html += '<!-- Small device layout -->';

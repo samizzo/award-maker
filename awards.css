@@ -1,4 +1,6 @@
 /* Award styles for embedding */
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
 div#awards {
     margin-top: 0px;
 }
@@ -14,7 +16,6 @@ div#awards div.award {
     height: 120px;
     background: url("laurel-left.png") left no-repeat, url("laurel-right.png") right no-repeat;
     display: inline-block;
-    font-family: Open Sans, sans-serif;
 }
 
 div#awards div.award h2 {
@@ -25,7 +26,7 @@ div#awards div.award h2 {
     text-align: center;
     vertical-align: middle;
     width: 100%;
-    font-family: Open Sans, sans-serif;
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bold;
 }
 
@@ -33,21 +34,12 @@ div#awards div.award p {
     line-height: 1.2em;
     margin: 0;
     padding: 0;
-    font-size: 9.5pt;
+    font-size: 9pt;
     color: #fff;
     text-align: center;
-    font-family: Open Sans, sans-serif;
-}
-
-div#awards div.award span.italic,
-div#awards div.award p.italic {
-    font-style: italic;
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 div#awards div.award p.small {
-    font-size: 6.5pt;
-}
-
-div#awards div.award p.medium {
     font-size: 9pt;
 }
