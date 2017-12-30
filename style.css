@@ -106,7 +106,9 @@ div.award-preview-container {
     resize: none;
 }
 
-button.remove-award {
+button.remove-award,
+button.award-up,
+button.award-down {
     display: none;
 }
 
@@ -114,18 +116,31 @@ td {
     line-height: 26px;
 }
 
-tbody tr:hover button.remove-award {
+th.buttons {
+    width: 84px;
+}
+
+tbody tr:hover button.remove-award,
+tbody tr:hover button.award-up,
+tbody tr:hover button.award-down  {
     display: inline-block;
 }
 
 button.add-award,
-button.remove-award {
+button.remove-award,
+button.award-up,
+button.award-down {
     width: 26px;
     height: 26px;
+    margin-right: 2px;
 }
 
 td.add-award-container {
     vertical-align: middle;
+}
+
+tbody tr {
+    transition: background-color .6s;
 }
 
 .uk-table-striped tbody tr:nth-of-type(odd) {

@@ -10,7 +10,7 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard' ], function($, Pre
     var $preview = $('.award-preview');
 
     function makeTableRow(award, index) {
-        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td><button data-awardindex="'+index+'"" class="remove-award uk-button uk-button-mini uk-button-primary fa fa-trash-o"></button></td></tr>';
+        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td><button data-awardindex="'+index+'" class="award-up uk-button uk-button-mini uk-button-primary fa fa-arrow-up"></button><button data-awardindex="'+index+'" class="award-down uk-button uk-button-mini uk-button-primary fa fa-arrow-down"></button><button data-awardindex="'+index+'" class="remove-award uk-button uk-button-mini uk-button-primary fa fa-trash-o"></button></td></tr>';
     }
 
     function addAward(position, category, festival) {
@@ -25,6 +25,25 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard' ], function($, Pre
     function removeAward(index) {
         if (index >= 0 && index < awards.length) {
             awards.splice(index, 1);
+            refreshTable();
+            Presskit.refresh(awards);
+            Preview.refresh(awards);
+            Json.refresh(awards);
+        }
+    }
+
+    function moveAward(index, newIndex) {
+        if (index >= 0 && index < awards.length) {
+            var oldAward = awards[index];
+            awards.splice(index, 1);
+            if (newIndex < 0) {
+                newIndex = 0;
+            }
+            if (newIndex >= awards.length) {
+                newIndex = awards.length;
+            }
+            awards.splice(newIndex, 0, oldAward);
+
             refreshTable();
             Presskit.refresh(awards);
             Preview.refresh(awards);
@@ -80,6 +99,18 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard' ], function($, Pre
         var $target = $(eventData.target);
         var index = $target.data('awardindex');
         removeAward(index);
+    });
+
+    $('tbody').on('click', '.award-up', function (eventData) {
+        var $target =  $(eventData.target);
+        var index = $target.data('awardindex');
+        moveAward(index, index - 1);
+    });
+
+    $('tbody').on('click', '.award-down', function (eventData) {
+        var $target =  $(eventData.target);
+        var index = $target.data('awardindex');
+        moveAward(index, index + 1);
     });
 
     $('.add-award').click(function () {
