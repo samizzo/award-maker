@@ -56,6 +56,7 @@ h2 {
 }
 
 span.heading {
+    display: inline-block;
     background-color: #D5DDF6;
     border-bottom: 1px solid #97B0F8;
     padding-right: 8px;
@@ -126,7 +127,7 @@ div.award-preview {
 }
 
 div.award-preview-container {
-    background-color: 0;
+    background-color: #000;
     border: none;
 }
 
