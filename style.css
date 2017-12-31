@@ -70,7 +70,7 @@ button.button {
     margin-top: 10px;
     color: #1A1A1A;
     background: none;
-    border: none;
+    border: 1px solid rgba(0,0,0,0);
     height: 26px;
     width: 28px;
 }
