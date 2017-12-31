@@ -107,8 +107,9 @@ define([ 'jquery', 'mustache', 'clipboard', 'filesaver' ], function($, Mustache,
 '<html>\n' +
 '\t<head>\n' +
 '\t\t<style>\n' +
-'\t\t\t/* Award styles for embedding */\n' +
+'\t\t\t/* Award styles. Copy these into your stylesheet. If you are already using UIkit 2 or the Raleway font, feel free to remove these from here! To change fonts, replace Raleway in the font-family CSS below. */\n' +
 '\t\t\t@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");\n' +
+'\t\t\t@import url("https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.min.css");\n' +
 '\n' +
 '\t\t\tbody {\n' +
 '\t\t\t\tbackground-color: #000;\n' +
@@ -157,9 +158,9 @@ define([ 'jquery', 'mustache', 'clipboard', 'filesaver' ], function($, Mustache,
 '\t\t\t\tfont-size: 9pt;\n' +
 '\t\t\t}\n' +
 '\t\t</style>\n' +
-'\t\t<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.min.css" />\n' +
 '\t</head>\n' +
-'\t<body>\n';
+'\t<body>\n' +
+'\t\t<!-- Copy everything within the body tags into your own HTML. -->\n';
 
     var clipboard = new Clipboard('.preview-clipboard', {
         text: function (trigger) {

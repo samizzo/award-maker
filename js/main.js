@@ -1,4 +1,4 @@
-define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard' ], function($, Preview, Json, Presskit, Clipboard) {
+define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard', 'uikit' ], function($, Preview, Json, Presskit, Clipboard, UIkit) {
     var awards = [];
     var clipboard = new Clipboard('.clipboard-btn');
 
@@ -151,5 +151,10 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard' ], function($, Pre
     $('.example').click(function () {
         var json = '[{"position":"WINNER","category":"GAME OF THE YEAR","festival":"INTEL LEVEL UP 2017"},{"position":"WINNER","category":"BEST PUZZLE/PHYSICS GAME","festival":"INTEL LEVEL UP 2017"},{"position":"FINALIST","category":"BEST SOUND/MUSIC","festival":"AZPLAY FESTIVAL 2017"},{"position":"FINALIST","category":"INDIE PRIZE SHOWCASE ASIA","festival":"INDIE PRIZE 2017"},{"position":"FINALIST","category":"ACROSS THE DITCH AWARD","festival":"PLAY BY PLAY FESTIVAL 2017"},{"position":"EDITOR\'S CHOICE","category":"MUSICALITY AWARD","festival":"SLIDEDB APP OF THE YEAR 2016"},{"position":"OFFICIAL SELECTION","category":"MADE WITH UNITY SHOWCASE","festival":"UNITE MELBOURNE 2016"},{"position":"FINALIST","category":"EXCELLENCE IN DESIGN","festival":"AGDA AWARDS 2016"},{"position":"FINALIST","category":"EXCELLENCE IN AUDIO","festival":"AGDA AWARDS 2016"},{"position":"HONORABLE MENTION","category":"INNOVATION","festival":"AGDA AWARDS 2016"}]';
         Json.setJson(json);
+    });
+
+    $('.help').click(function () {
+        var modal = UIkit.modal('#help');
+        modal.show();
     });
 });

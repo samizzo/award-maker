@@ -10,6 +10,45 @@
     </head>
 
     <body>
+        <div class="uk-modal" id="help">
+            <div class="uk-modal-dialog">
+                <!-- <a class="uk-modal-close uk-close"></a> -->
+                <div class="uk-modal-header"><h1>Help</h1></div>
+                <p>
+                    This tool generates responsive award laurel layouts using UIkit 2. There are three layouts generated:<br/>
+                    <ul>
+                        <li>Large - three awards per row</li>
+                        <li>Medium - two awards per row</li>
+                        <li>Small - one award per row</li>
+                    </ul>
+                </p>
+                <p>
+                    The UIkit CSS switches between these layouts automatically based on the window resolution of the browser. The generated HTML is mostly self-contained; the only two external references it contains are to the Raleway font and the UIkit 2 CSS. If you are already using these you can remove them.
+                </p>
+                <p>
+                    To use the generated HTML in your own web pages, copy it to the clipboard or save it to disk with the buttons in the HTML preview window. Then copy the CSS into your own stylesheet, and copy the HTML between the body tags into your page. If you wish to switch fonts, simply change the font-family in the generated CSS.
+                </p>
+                <p>
+                    There is also a presskit snippet generated for copying into your <a href="http://dopresskit.com/">presskit()</a>.
+                </p>
+                <p>
+                    Finally, the JSON snippet can be kept in source control as your master award definition file. You can modify the JSON and paste into the text area to automatically update the awards.
+                </p>
+                <p>
+                    TL;DR usage:
+                    <ol>
+                        <li>Add awards to the table.</li>
+                        <li>Save the HTML code or copy to clipboard.</li>
+                        <li>Insert into your own webpage.</li>
+                        <li>Profit!</li>
+                    </ol>
+                </p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button type="button" class="uk-button uk-button-primary uk-modal-close">Close</button>
+                </div>
+            </div>
+        </div>
+
         <div class="title">
             <h1 class="title">AWARD MAKER</h1>
             <div>Create responsive laurel layouts for your award winning games!<span class="menu"><span class="help">Help</span> | <span class="example">Example</span> | <a href="https://www.polyphoniclp.com">Polyphonic LP</a></span></div>
