@@ -33,16 +33,9 @@ define([ 'jquery', 'filesaver', 'canvastoblob' ], function($, FileSaver, CanvasT
         context.lineTo(210, 76-0.5);
         context.stroke();
 
-        //var data = canvas.toDataURL('image/png');
-        //var blob = new Blob([ data ], { type: 'application/octet-stream' });
         canvas.toBlob(function (blob) {
             saveAs(blob, 'award.png');
         });
-        // var image = new Image(260, 120);
-        // image.src = data;
-        // var w = window.open();
-        // w.document.body.innerHTML = '<img src="' + data + '" width="260" height="120">';
-        // w.document.write(image.outerHTML);
     }
 
     return {
