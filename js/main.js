@@ -186,12 +186,13 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'image', 'clipboard', 'uikit' 
     if (a != undefined && a.length > 0) {
         var $body = $('body');
         var award = JSON.parse(a);
-        Image.refresh(award);
-        $body.find('*').not('canvas').remove();
-        $body.css('background-color', '#000');
-        var canvas = $('canvas')[0];
-        var data = canvas.toDataURL('image/png');
-        $body.append('<img src="' + data + '" title="award" id="award" />');
+        Image.refresh(award, function () {
+            $body.find('*').not('canvas').remove();
+            $body.css('background-color', '#000');
+            var canvas = $('canvas')[0];
+            var data = canvas.toDataURL('image/png');
+            $body.append('<img src="' + data + '" title="award" id="award" />');
+        });
     } else {
         $('#content').css('display', 'block');
         $('body').css('background-color', '#3498db');
