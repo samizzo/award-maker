@@ -1,4 +1,4 @@
-define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard', 'uikit' ], function($, Preview, Json, Presskit, Clipboard, UIkit) {
+define([ 'jquery', 'preview', 'json', 'presskit', 'image', 'clipboard', 'uikit' ], function($, Preview, Json, Presskit, Image, Clipboard, UIkit) {
     var awards = [];
     var clipboard = new Clipboard('.clipboard-btn');
 
@@ -10,7 +10,7 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard', 'uikit' ], functi
     var $preview = $('.award-preview');
 
     function makeTableRow(award, index) {
-        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td><button data-awardindex="'+index+'" class="award-up uk-button uk-button-mini uk-button-primary fa fa-arrow-up"></button><button data-awardindex="'+index+'" class="award-down uk-button uk-button-mini uk-button-primary fa fa-arrow-down"></button><button data-awardindex="'+index+'" class="remove-award uk-button uk-button-mini uk-button-primary fa fa-trash-o"></button></td></tr>';
+        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td><button title="Move up" data-awardindex="'+index+'" class="award-up uk-button uk-button-mini uk-button-primary fa fa-arrow-up"></button><button title="Move down" data-awardindex="'+index+'" class="award-down uk-button uk-button-mini uk-button-primary fa fa-arrow-down"></button><button title="Download as image" data-awardindex="'+index+'" class="award-image uk-button uk-button-mini uk-button-primary fa fa-floppy-o"></button><button title="Delete award" data-awardindex="'+index+'" class="remove-award uk-button uk-button-mini uk-button-primary fa fa-trash-o"></button></td></tr>';
     }
 
     function addAward(position, category, festival) {
@@ -111,6 +111,13 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'clipboard', 'uikit' ], functi
         var $target = $(eventData.target);
         var index = $target.data('awardindex');
         moveAward(index, index + 1);
+    });
+
+    $('tbody').on('click', '.award-image', function (eventData) {
+        var $target = $(eventData.target);
+        var index = $target.data('awardindex');
+        var award = awards[index];
+        Image.save(award);
     });
 
     $('.add-award').click(function () {

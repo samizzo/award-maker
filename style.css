@@ -142,6 +142,7 @@ div.award-preview-container {
     resize: none;
 }
 
+button.award-image,
 button.remove-award,
 button.award-up,
 button.award-down {
@@ -153,15 +154,17 @@ td {
 }
 
 th.buttons {
-    width: 84px;
+    width: 112px;
 }
 
+tbody tr:hover button.award-image,
 tbody tr:hover button.remove-award,
 tbody tr:hover button.award-up,
 tbody tr:hover button.award-down  {
     display: inline-block;
 }
 
+button.award-image,
 button.add-award,
 button.remove-award,
 button.award-up,
@@ -186,4 +189,10 @@ tbody tr {
 .error-message,
 .json-error-message {
     border: 1px solid #d85030;
+}
+
+canvas.image {
+    width: 260px;
+    height: 120px;
+    display: none;
 }
