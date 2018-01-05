@@ -10,7 +10,14 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'image', 'clipboard', 'uikit' 
     var $preview = $('.award-preview');
 
     function makeTableRow(award, index) {
-        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td><button title="Move up" data-awardindex="'+index+'" class="award-up uk-button uk-button-mini uk-button-primary fa fa-arrow-up"></button><button title="Move down" data-awardindex="'+index+'" class="award-down uk-button uk-button-mini uk-button-primary fa fa-arrow-down"></button><button title="Download as image" data-awardindex="'+index+'" class="award-image uk-button uk-button-mini uk-button-primary fa fa-floppy-o"></button><button title="Delete award" data-awardindex="'+index+'" class="remove-award uk-button uk-button-mini uk-button-primary fa fa-trash-o"></button></td></tr>';
+        var url = encodeURI('?a=' + JSON.stringify(award));
+        return '<tr><td>'+award.position+'</td><td>'+award.category+'</td><td>'+award.festival+'</td><td>' +
+            '<button title="Move up" data-awardindex="'+index+'" class="award-button award-up uk-button uk-button-mini uk-button-primary fa fa-arrow-up"></button>' +
+            '<button title="Move down" data-awardindex="'+index+'" class="award-button award-down uk-button uk-button-mini uk-button-primary fa fa-arrow-down"></button>' +
+            '<button title="Download as image" data-awardindex="'+index+'" class="award-button award-image uk-button uk-button-mini uk-button-primary fa fa-floppy-o"></button>' +
+            '<a href="' + url + '" title="Direct link to this award as image" data-awardindex="'+index+'" class="award-button award-image-link uk-button uk-button-mini uk-button-primary fa fa-link"></a>' +
+            '<button title="Delete award" data-awardindex="'+index+'" class="award-button remove-award uk-button uk-button-mini uk-button-primary fa fa-trash-o"></button>' +
+            '</td></tr>';
     }
 
     function addAward(position, category, festival) {
@@ -164,4 +171,29 @@ define([ 'jquery', 'preview', 'json', 'presskit', 'image', 'clipboard', 'uikit' 
         var modal = UIkit.modal('#help');
         modal.show();
     });
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    var a = getParameterByName('a');
+    if (a != undefined && a.length > 0) {
+        var $body = $('body');
+        var award = JSON.parse(a);
+        Image.refresh(award);
+        $body.find('*').not('canvas').remove();
+        $body.css('background-color', '#000');
+        var canvas = $('canvas')[0];
+        var data = canvas.toDataURL('image/png');
+        $body.append('<img src="' + data + '" title="award" id="award" />');
+    } else {
+        $('#content').css('display', 'block');
+        $('body').css('background-color', '#3498db');
+    }
 });

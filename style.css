@@ -1,6 +1,10 @@
 html, body {
-    background-color: #3498db;
+    background-color: #000;
     background-image: none;
+}
+
+#content {
+    display: none;
 }
 
 .uk-modal-header {
@@ -142,36 +146,34 @@ div.award-preview-container {
     resize: none;
 }
 
-button.award-image,
-button.remove-award,
-button.award-up,
-button.award-down {
-    display: none;
-}
-
 td {
     line-height: 26px;
 }
 
 th.buttons {
-    width: 112px;
+    width: 140px;
 }
 
-tbody tr:hover button.award-image,
-tbody tr:hover button.remove-award,
-tbody tr:hover button.award-up,
-tbody tr:hover button.award-down  {
-    display: inline-block;
-}
-
-button.award-image,
-button.add-award,
-button.remove-award,
-button.award-up,
-button.award-down {
+a.award-button,
+button.award-button {
+    display: none;
     width: 26px;
     height: 26px;
     margin-right: 2px;
+    line-height: inherit;
+}
+
+button.add-award {
+    width: 26px;
+    height: 26px;
+    margin-right: 2px;
+    line-height: inherit;
+    float: right;
+}
+
+tbody tr:hover a.award-button,
+tbody tr:hover button.award-button {
+    display: inline-block;
 }
 
 td.add-award-container {
@@ -195,4 +197,17 @@ canvas.image {
     width: 260px;
     height: 120px;
     display: none;
+}
+
+div#force-font {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    color: rgba(0,0,0,0);
+}
+
+div#force-font-bold {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;   
+    font-weight: bold;
+    font-size: 13pt;
+    color: rgba(0,0,0,0);
 }

@@ -19,100 +19,105 @@
     </head>
 
     <body>
-        <div class="uk-modal" id="help">
-            <div class="uk-modal-dialog">
-                <div class="uk-modal-header"><h1>Help</h1></div>
-                <p>
-                    This tool generates responsive award laurel layouts using UIkit 2. There are three layouts generated:<br/>
-                    <ul>
-                        <li>Large - three awards per row</li>
-                        <li>Medium - two awards per row</li>
-                        <li>Small - one award per row</li>
-                    </ul>
-                </p>
-                <p>
-                    To use the generated HTML in your own web pages, copy it to the clipboard or save it to disk with the buttons in the HTML preview window. Then copy the CSS into your own stylesheet, and copy the HTML between the body tags into your page. If you wish to use a different font, simply change the font-family in the generated CSS.
-                </p>
-                <p>
-                    You can remove the UIkit 2 and font imports if you are already using UIkit 2 or don't wish to use the default font.
-                <p>
-                    There is also a presskit snippet generated for copying into your own <a href="http://dopresskit.com/">presskit()</a>.
-                </p>
-                <p>
-                    Finally, the JSON snippet can be kept in source control as your master award definition file. You can modify the JSON and paste into the text area to automatically update the awards.
-                </p>
-                <p>
-                    TL;DR usage:
-                    <ol>
-                        <li>Add awards to the table.</li>
-                        <li>Save the HTML code to disk or copy it to the clipboard with the buttons.</li>
-                        <li>Insert it into your own webpage.</li>
-                        <li>Profit!</li>
-                    </ol>
-                </p>
-                <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="uk-button uk-button-primary uk-modal-close">Close</button>
+        <div id="content">
+            <div class="uk-modal" id="help">
+                <div class="uk-modal-dialog">
+                    <div class="uk-modal-header"><h1>Help</h1></div>
+                    <p>
+                        This tool generates responsive award laurel layouts using UIkit 2. There are three layouts generated:<br/>
+                        <ul>
+                            <li>Large - three awards per row</li>
+                            <li>Medium - two awards per row</li>
+                            <li>Small - one award per row</li>
+                        </ul>
+                    </p>
+                    <p>
+                        To use the generated HTML in your own web pages, copy it to the clipboard or save it to disk with the buttons in the HTML preview window. Then copy the CSS into your own stylesheet, and copy the HTML between the body tags into your page. If you wish to use a different font, simply change the font-family in the generated CSS.
+                    </p>
+                    <p>
+                        You can remove the UIkit 2 and font imports if you are already using UIkit 2 or don't wish to use the default font.
+                    </p>
+                    <p>
+                        There is also a presskit snippet generated for copying into your own <a href="http://dopresskit.com/">presskit()</a>.
+                    </p>
+                    <p>
+                        Finally, the JSON snippet can be kept in source control as your master award definition file. You can modify the JSON and paste into the text area to automatically update the awards.
+                    </p>
+                    <p>
+                        TL;DR usage:
+                        <ol>
+                            <li>Add awards to the table.</li>
+                            <li>Save the HTML code to disk or copy it to the clipboard with the buttons.</li>
+                            <li>Insert it into your own webpage.</li>
+                            <li>Profit!</li>
+                        </ol>
+                    </p>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button type="button" class="uk-button uk-button-primary uk-modal-close">Close</button>
+                    </div>
                 </div>
+            </div>
+
+            <div class="title">
+                <h1 class="title">AWARD MAKER</h1>
+                <div>Create responsive laurel layouts for your award winning games!<span class="menu"><span class="help">Help</span> | <span class="example">Example</span> | <a href="https://www.polyphoniclp.com">Polyphonic LP</a> | <a href="https://twitter.com/BananaboySam">@BananaboySam</a></span></div>
+            </div>
+            <div class="uk-flex uk-flex-space-around">
+                <div class="uk-panel uk-panel-box uk-panel-box-primary award-table uk-flex-item-auto">
+                    <table class="uk-table uk-table-striped">
+                        <thead>
+                            <tr>
+                                <th>Position</th><th>Category</th><th>Festival</th><th class="buttons">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <form class="uk-form" onsubmit="return false;">
+                                        <input type="text" placeholder="Position" id="position" class="" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="uk-form" onsubmit="return false;">
+                                        <input type="text" placeholder="Category" id="category" class="" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="uk-form" onsubmit="return false;">
+                                        <input type="text" placeholder="Festival" id="festival" class="" />
+                                    </form>
+                                </td>
+                                <td class="add-award-container"><button title="Add award" class="add-award uk-button uk-button-mini uk-button-primary fa fa-plus"></button></td>
+                            </tr>
+                        </tfoot>
+                        <tbody id="table-data">
+                        </tbody>
+                    </table>
+                    <div class="error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
+                </div>
+
+                <div class="uk-flex uk-flex-column uk-flex-item-auto award-data">
+                    <div class="award-json uk-flex-item-auto uk-flex uk-flex-column uk-form">
+                        <span class="heading"><h2 class="uk-display-inline-block">JSON</h2><button class="fa fa-clipboard uk-float-right button tooltip clipboard-btn" title="Copy to clipboard" data-clipboard-target="#json"></button><button class="fa fa-floppy-o uk-float-right button tooltip download-btn" title="Save to disk" id="json"></button></span>
+                        <textarea cols="" rows="" placeholder="" id="json" class="uk-flex-item-auto"></textarea>
+                        <div class="json-error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
+                    </div>
+
+                    <div class="award-presskit uk-flex-item-auto uk-flex uk-flex-column uk-form">
+                        <span class="heading"><h2 class="uk-display-inline-block">Presskit</h2><button class="fa fa-clipboard uk-float-right button tooltip clipboard-btn" title="Copy to clipboard" data-clipboard-target="#presskit"></button><button class="fa fa-floppy-o uk-float-right button tooltip download-btn" title="Save to disk" id="presskit"></button></span>
+                        <textarea cols="" rows="" placeholder="" id="presskit" class="uk-flex-item-auto" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-preview uk-flex uk-flex-column">
+                <span class="heading"><h2 class="uk-display-inline-block">HTML preview</h2><button class="fa fa-clipboard uk-float-right button tooltip preview-clipboard" title="Copy to clipboard"></button><button class="fa fa-floppy-o uk-float-right button tooltip download-btn" title="Save to disk" id="preview"></button></span>
+                <div class="award-preview-container uk-panel uk-panel-box"></div>
             </div>
         </div>
 
-        <div class="title">
-            <h1 class="title">AWARD MAKER</h1>
-            <div>Create responsive laurel layouts for your award winning games!<span class="menu"><span class="help">Help</span> | <span class="example">Example</span> | <a href="https://www.polyphoniclp.com">Polyphonic LP</a> | <a href="https://twitter.com/BananaboySam">@BananaboySam</a></span></div>
-        </div>
-        <div class="uk-flex uk-flex-space-around">
-            <div class="uk-panel uk-panel-box uk-panel-box-primary award-table uk-flex-item-auto">
-                <table class="uk-table uk-table-striped">
-                    <thead>
-                        <tr>
-                            <th>Position</th><th>Category</th><th>Festival</th><th class="buttons">&nbsp;</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                <form class="uk-form" onsubmit="return false;">
-                                    <input type="text" placeholder="Position" id="position" class="" />
-                                </form>
-                            </td>
-                            <td>
-                                <form class="uk-form" onsubmit="return false;">
-                                    <input type="text" placeholder="Category" id="category" class="" />
-                                </form>
-                            </td>
-                            <td>
-                                <form class="uk-form" onsubmit="return false;">
-                                    <input type="text" placeholder="Festival" id="festival" class="" />
-                                </form>
-                            </td>
-                            <td class="add-award-container"><button class="add-award uk-button uk-button-mini uk-button-primary fa fa-plus"></button></td>
-                        </tr>
-                    </tfoot>
-                    <tbody id="table-data">
-                    </tbody>
-                </table>
-                <div class="error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
-            </div>
-
-            <div class="uk-flex uk-flex-column uk-flex-item-auto award-data">
-                <div class="award-json uk-flex-item-auto uk-flex uk-flex-column uk-form">
-                    <span class="heading"><h2 class="uk-display-inline-block">JSON</h2><button class="fa fa-clipboard uk-float-right button tooltip clipboard-btn" title="Copy to clipboard" data-clipboard-target="#json"></button><button class="fa fa-floppy-o uk-float-right button tooltip download-btn" title="Save to disk" id="json"></button></span>
-                    <textarea cols="" rows="" placeholder="" id="json" class="uk-flex-item-auto"></textarea>
-                    <div class="json-error-message uk-hidden uk-alert uk-alert-danger">Test message</div>
-                </div>
-
-                <div class="award-presskit uk-flex-item-auto uk-flex uk-flex-column uk-form">
-                    <span class="heading"><h2 class="uk-display-inline-block">Presskit</h2><button class="fa fa-clipboard uk-float-right button tooltip clipboard-btn" title="Copy to clipboard" data-clipboard-target="#presskit"></button><button class="fa fa-floppy-o uk-float-right button tooltip download-btn" title="Save to disk" id="presskit"></button></span>
-                    <textarea cols="" rows="" placeholder="" id="presskit" class="uk-flex-item-auto" readonly></textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="award-preview uk-flex uk-flex-column">
-            <span class="heading"><h2 class="uk-display-inline-block">HTML preview</h2><button class="fa fa-clipboard uk-float-right button tooltip preview-clipboard" title="Copy to clipboard"></button><button class="fa fa-floppy-o uk-float-right button tooltip download-btn" title="Save to disk" id="preview"></button></span>
-            <div class="award-preview-container uk-panel uk-panel-box" />
-        </div>
-
-        <canvas width="260" height="120" class="image" />
+        <canvas width="260" height="120" class="image"></canvas>
+        <div id="force-font">XXX</div>
+        <div id="force-font-bold">XXX</div>
     </body>
 </html>

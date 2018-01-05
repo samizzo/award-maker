@@ -9,7 +9,7 @@ define([ 'jquery', 'filesaver', 'canvastoblob' ], function($, FileSaver, CanvasT
     var right = new Image();
     right.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABtCAMAAADQzBKcAAAC+lBMVEUGBgYAAAD///////////////////////////////9wcHCfn59jY2MzNDT////////////////y8vJpaWn////////////////+/v7//v7///+ys7Ofn5/Z2dmlpaVzc3M8PDzJycmIiIhVVVWPjo7////+/v7////z8/P////////z8/Pc3d3l5eXj4+PIyMj////29/fZ2dnX19f09PT///+xsbGhoaGSkpK3uLja2tqnp6e1tbUhICD////4+Pjv7+/5+fn////t7e3Y2Nj9/f3n5+fk5OT+/v729vbY2dn////q6ur////V1dXf39/Z2dnx8fHMzMy3t7fCwsLa2tqurq7Pz8+enp79/f3V1tbGxsbY2Nivr6/8/PzOzs7Q0NDFxcWRkpLk5OSsrKzKysp4eHisrKx3d3e0tLRubm5jZGSWlZWGhoa2trako6OQkJBKSkr6+vr7/Pzy8vLw8PDi4uL////////19fX6+/vx8fHj4+P////w8PD+/v7r6+vMzc3i4uLOzs7BwcHz8/Pu7u7+/v7Qz8/Ky8vu7e3FxcXZ2dm+vr7g4OCDg4Pr6+v9/f28vLydnZ2IiIijo6Pm5uaXl5e/v7/T09OUlZXf39/f3t6fn5+Dg4Pw8PCXlpaZmZmBgoLq6upWV1fGx8ft7e37+/v19fXo6Ojw8PDW1tbt7e329/fg4eH3+PjKycnp6en29vbQz8/IyMjf39/09PTBwMDo5+fc3d3a2Ni9vb2en5+vr6/////e3t6oqKj////p6Ojz8/PS0tLl5eWoqKj///+ysrKurq7v7+94eHizs7Px8fHa2tq8vLz////q6upcXFx0dHT///93d3dHR0evr6/19fXq6+v4+Pj39/fT09P29vb09PTExcXOzs7i4+PZ2trt7u60tLTs7e3Kysrv7++8vLyur6/Dw8P6+vrj4+OhoaHIyMhvb2+MjIxycnLs7Oz///+FhYX////r6+uFhYXj4+OjoqLJycnIyMhGRkb////+0kWLAAAA/XRSTlMCAPb49Pv88ObdBxAPBOzY1btuGOnQs66tmm8+ODImFREPDQwE49TOzcC3t5WOiIiFhXhpZlFLRj80FhUICODMy8G+trCjo6Gfn5WUj46KgoB4dnJw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';
 
-    function save(award) {
+    function refresh(award) {
         context.fillStyle = 'rgb(0, 0, 0)';
         context.fillRect(0, 0, width, height);
 
@@ -32,13 +32,17 @@ define([ 'jquery', 'filesaver', 'canvastoblob' ], function($, FileSaver, CanvasT
         context.moveTo(51, 76-0.5);
         context.lineTo(210, 76-0.5);
         context.stroke();
+    }
 
+    function save(award) {
+        refresh(award);
         canvas.toBlob(function (blob) {
             saveAs(blob, 'award.png');
         });
     }
 
     return {
-        save: save
+        save: save,
+        refresh: refresh
     }
 });
